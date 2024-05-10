@@ -1,0 +1,21 @@
+.profile{
+    background-color: rgba(3, 96, 217, 0.1);
+}
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.profile-link{
+    width: 100%;
+}
+[dir='rtl'] .profile-form input {
+    text-align: center !important;
+}
+[dir='rtl'] .profile-form span {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}

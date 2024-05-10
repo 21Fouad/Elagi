@@ -1,0 +1,31 @@
+.page-link {
+    color: #007bff !important;
+    background-color: #fff;
+    border-color: #007bff;
+}
+.page-link:hover {
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
+.pagination .page-link {
+    border-radius: 0 !important;
+}
+
+[dir ='rtl'] .product-badge{
+    right: 0 !important;
+}
+/* Ensure button expands as needed on smaller screens */
+@media (max-width: 480px) {
+    .text-card {
+        font-size: 0.7rem !important; /* Stack elements vertically on small screens */
+    }
+    .h-card{
+        font-size: 0.8rem !important;
+    }
+}

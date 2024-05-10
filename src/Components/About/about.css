@@ -1,0 +1,51 @@
+.aboutImg-Background{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 1rem; 
+    border-radius: 80px 230.5px 0px 80px;    
+}
+
+.hAbout {
+    font-size: 2rem; 
+    font-weight: bold; 
+    margin-bottom: 1rem; 
+    color: #007bff; 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.pAbout {
+    font-size: 1rem;
+    line-height: 1.6; 
+    color: #333; 
+    font-family: 'Open Sans', sans-serif; 
+}
+
+.featuresImg {
+    width: 100%;
+    height: auto;
+}
+.flip-horizontal {
+    transform: scaleX(-1);
+}
+[dir='rtl'].featuresImg {
+    transform: scaleX(-1);
+}
+.featuresImg{
+    background-image: url(../img/ProductFeaturesAbout.jfif);
+    background-size: cover;
+    background-position: center center;
+}
+.overlay{
+    background-color:  #FA82324D !important;
+    position:absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 0 !important;
+}
+.about-feature-content{
+    position: relative;
+    z-index: 2 !important;
+}

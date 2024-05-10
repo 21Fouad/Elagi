@@ -1,0 +1,86 @@
+body {
+    padding-top: 7rem; /* Adjust this value based on the height of your navbar */
+}
+header{
+    z-index: 100000000000000 !important;
+}
+.nav-bar{
+    background-color: #2C73EB;
+    z-index: 100000000000000 !important;
+}
+a {
+    color: #fff !important;
+}
+/* .icons{
+    margin-left: auto;
+} */
+.close-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+.navbar-toggler {
+    border: none !important; /* Removes border */
+    outline: none !important; /* Removes outline */
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important; /* Removes focus outline */
+}
+
+.fa-bars:before, .fa-navicon:before {
+    color: white;
+}
+
+
+/* RTL adjustments if needed (uncomment if you observe issues in testing) */
+[dir='rtl'] .badge {
+    right: 25%; /* Keep the same right offset in RTL */
+}
+[dir='rtl'] .icon-cart {
+    transform: scaleX(-1); /* Flips the icon horizontally */
+}
+[dir='rtl'] .icons {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+[dir='rtl'] .icons a{
+    text-align: start !important;
+}
+[dir='rtl'] .licons a{
+    text-align: start !important;
+}
+[dir='rtl'] .lang .dropdown-menu[data-bs-popper]{
+    right: 0 !important; 
+    text-align: center !important;
+}
+[dir='rtl'] .icons .dropdown-menu[data-bs-popper]{
+    right: 60% !important; 
+}
+[dir='rtl'] .offerTitle{
+    font-size: 0.9rem;
+    padding-right: 0.3rem !important;
+}
+[dir='rtl'] .shop{
+    margin-left: 0 !important;
+    padding-right: 0.3rem !important;
+}
+.shop{
+    padding-right: 0.5rem !important;
+}
+.offerTitle{
+    padding-left: 0.3rem !important;
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu[data-bs-popper] {
+        left: 60% !important;
+    }
+}
+

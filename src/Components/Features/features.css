@@ -1,0 +1,17 @@
+.my-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none !important;
+}
+.my-card:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.custom-popover .popover-header {
+    background-color: #2C73EB;
+    color: white; 
+}
+
+.custom-popover .popover-body {
+    background-color: white; 
+    color: black;
+}

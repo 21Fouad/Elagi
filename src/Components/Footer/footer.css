@@ -1,0 +1,22 @@
+.footer{
+    background-color: #2C73EB;
+}
+h4{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28.35px;
+}
+dl, ol, ul{
+    list-style: none;
+    padding-left: 0 !important;
+}
+[dir='rtl'] dl, ol, ul{
+    list-style: none;
+    padding-right: 0 !important;
+}
+ul li a{
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 24.24px;
+    letter-spacing: -1%;
+}
