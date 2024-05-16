@@ -1,0 +1,18 @@
+/* #chatbase-bubble-button{
+    bottom: 80px !important;
+}
+[dir='rtl'] #chatbase-bubble-button {
+    position: fixed;   
+    left: 20px !important;      
+    right: auto !important;    
+}
+
+[dir='rtl'] #chatbase-bubble-window {
+    position: fixed;
+    bottom: 6.5rem !important;   
+    left: 20px !important;      
+    right: auto !important;    
+}
+#closeIcon{
+    margin-top: 10px !important;
+} */

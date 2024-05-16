@@ -1,0 +1,42 @@
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    h1, .form-label {
+        font-size: 16px;
+    }
+}
+
+i{
+    color: #2C73EB;
+}
+.phone span{
+    background-color: #2C73EB;
+}
+
+.register input{
+    border-radius: 0;
+}
+.register span{
+    border-radius: 0;
+}
+[dir = 'rtl'] .register #check{
+    border-radius: 0.25rem !important;
+    -webkit-border-radius: 0.25rem !important;
+    -moz-border-radius: 0.25rem !important;
+    -ms-border-radius: 0.25rem !important;
+    -o-border-radius: 0.25rem !important;
+}
+[dir = 'rtl'] .register .phone-text{
+    text-align: end !important;
+}
+[dir = 'rtl'] .form-check-label{
+    margin-right: 2rem !important;
+}
+[dir = 'rtl'] .google-img{
+    transform: scaleX(-1);
+    margin-left: 1rem !important;
+}

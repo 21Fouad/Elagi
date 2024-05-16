@@ -1,0 +1,71 @@
+.title{
+    color: #2C73EB;
+}
+.title span{
+    color: #1B3C74;
+}
+.header-home{
+    background-color: rgba(232, 241, 255, 0.47);
+}
+.get-offer{
+    background-color:  rgba(44, 115, 235, 1);
+}
+.scan-prescription{
+    background-color: rgba(3, 96, 217, 0.7);
+}
+.overlay-offer{
+    background-color: rgba(3, 96, 217, 0.7);
+}
+.dash-icon{
+    color: rgba(27, 60, 116, 1);
+    width: 45px;
+    height: 3px;
+    border-radius: 50px;
+
+}
+.donation-card {
+    max-width: 900px; /* Adjust the width of the donation card */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to be centered */
+    z-index: 10; /* Ensure it's above other elements */
+}
+.carousel-indicators{
+    margin-bottom: -2rem !important;
+}
+
+[dir='rtl'] .fa-check-circle:before{
+    margin-left: 0.5rem !important;
+}
+[dir='rtl'] .featured_brands i{
+    transform: scaleX(-1);
+}
+[dir='rtl'] .discover i{
+    transform: scaleX(-1);
+}
+[dir='rtl'] .get-offer h4{
+    font-size: 1.35rem !important;
+    margin-bottom: 1rem;
+}
+[dir='rtl'] .scan-prescription h4{
+    font-size: 1.35rem !important;
+    margin-bottom: 1rem;
+}
+[dir='rtl'] .heart-icon{
+    margin-right: 0.5rem;
+}
+/* Responsive adjustments */
+@media (max-width: 576px) {
+.donation-card {
+    width: 90%; /* Make the card take more width on smaller screens */
+}
+
+.overlay-offer h2 {
+    font-size: 2rem; /* Smaller headings on small screens */
+}
+}
+
+@media (max-width: 768px) {
+.overlay-offer .row > div {
+    margin-bottom: 1rem; /* Add space between rows */
+}
+}

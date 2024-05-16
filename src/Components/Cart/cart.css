@@ -1,0 +1,12 @@
+[dir="rtl"] .cartImg {
+    transform: scaleX(-1);
+}
+[dir="rtl"] .cartEmptyH{
+    margin-right: 2rem;
+}
+[dir="rtl"] .cartEmptyP{
+    margin-right: 5rem;
+}
+[dir="rtl"] .cartEmptyL{
+    margin-right: 5rem;
+}

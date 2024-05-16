@@ -1,0 +1,17 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Or any color that fits your design */
+    z-index: 1050; /* High z-index to cover everything else */
+}
+
+.loading-logo {
+    width: 150px; /* Adjust based on your logo */
+    margin-bottom: 20px;
+}
