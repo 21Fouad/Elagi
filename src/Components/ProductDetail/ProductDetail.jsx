@@ -111,7 +111,7 @@ export default function ProductDetail() {
                 <div className="col-md-12 col-lg-6 my-auto">
                     <div className='d-flex flex-column flex-lg-row'>
                         <h2 className="flex-fill">{displayName}</h2>
-                        <span className="badge text-bg-success my-auto">{displayCategory}</span>
+                        <span className="badge text-bg-success my-1 my-md-auto">{displayCategory}</span>
                     </div>
                     <p className='price-title'>{t('productDetail.price')}: <span className='text-primary price'>{t('productDetail.EGP')} {product.price}</span></p>
                     <div>

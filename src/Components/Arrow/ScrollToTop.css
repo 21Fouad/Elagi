@@ -1,6 +1,7 @@
 .scroll-to-top {
     position: fixed;
-    right: 20px;
+    /* right: 20px; */
+    right: auto;
     bottom: 20px;
     cursor: pointer;
     display: inline-block;
@@ -31,6 +32,6 @@
 
 
 .scroll-to-top.rtl {
-    right: auto; /* Disable right positioning */
-    left: 20px; /* Position to the left */
+    right: 0px !important;
+    /* left: 25px;  */
 }

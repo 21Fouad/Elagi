@@ -12,6 +12,13 @@
     -ms-border-radius: 0 ;
     -o-border-radius: 0 ;
 }
+.form-check-input[type=checkbox] {
+    border-radius: .25em !important;
+    -webkit-border-radius: .25em !important;
+    -moz-border-radius: .25em !important;
+    -ms-border-radius: .25em !important;
+    -o-border-radius: .25em !important;
+}
 [dir = 'rtl'] .login #check{
     border-radius: 0.25rem !important;
     -webkit-border-radius: 0.25rem !important;

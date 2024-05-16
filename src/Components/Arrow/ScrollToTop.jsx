@@ -33,7 +33,7 @@ export default function ScrollToTop() {
         <div className={`scroll-to-top ${i18n.language === 'ar' ? 'rtl' : ''}`}>
             {isVisible && 
                 <div onClick={scrollToTop}>
-                    <i className="fa-solid fa-circle-arrow-up icon"></i>
+                    <i className="fa-solid fa-circle-arrow-up icon bg-white rounded-5"></i>
                 </div>
             }
         </div>

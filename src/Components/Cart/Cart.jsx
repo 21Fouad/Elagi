@@ -105,6 +105,11 @@ export default function Cart() {
         return cartItems.reduce((total, item) => total + item.quantity * item.product.price, 0).toFixed(2);
     };
 
+    const calculateTotalQuantity = () => {
+        return cartItems.reduce((total, item) => total + item.quantity, 0);
+    };
+    
+
     const handleCheckout = () => {
         navigate('/checkout');
     };
@@ -156,8 +161,10 @@ export default function Cart() {
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colSpan="3">{t('cart.total')}</th>
-                                    <th colSpan="2">EGP {calculateTotal()}</th>
+                                    <th colSpan="1">{t('cart.total_quantity')} : {calculateTotalQuantity()}</th>
+                                </tr>
+                                <tr>
+                                    <th colSpan="1">{t('cart.total')} : EGP {calculateTotal()}</th>
                                 </tr>
                             </tfoot>
                         </table>

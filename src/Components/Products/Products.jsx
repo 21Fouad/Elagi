@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams} from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { CartContext } from '../CartContext'; 
 import { useFavorites } from '../FavoritesContext';
@@ -10,6 +10,7 @@ import './product.css'
 
 export default function Products() {
     const { t, i18n } = useTranslation();
+    const location = useLocation();
     const { enqueueSnackbar } = useSnackbar();
     const [searchTerm, setSearchTerm] = useState('');
     const [products, setProducts] = useState([]);
@@ -19,6 +20,8 @@ export default function Products() {
     const { categorySlug } = useParams();
     const { cartItems, addToCart } = useContext(CartContext);
     const { favorites, toggleFavorite } = useFavorites();
+    const { categoryName, categoryName_ar } = location.state || { categoryName: '', categoryName_ar: '' }; // Fallback if no state is passed
+
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -124,16 +127,21 @@ export default function Products() {
                     <h1>{t('products.header')}</h1>
                 </div>
                 <div className="container">
-                    <div className="search-bar-container d-flex my-4">
-                        <div className="search-bar">
-                            <i className="fa fa-search" aria-hidden="true"></i>
-                            <input 
-                                type="text" 
-                                placeholder={t('products.search_placeholder')} 
-                                value={searchTerm}
-                                onChange={handleSearchChange} 
-                                className="search-input shadow-sm py-2 border-info"
-                            />
+                    <div className='row justify-content-between'>
+                        <div className="col-6 search-bar-container d-flex my-4">
+                            <div className="search-bar">
+                                <i className="fa fa-search" aria-hidden="true"></i>
+                                <input 
+                                    type="text" 
+                                    placeholder={t('products.search_placeholder')} 
+                                    value={searchTerm}
+                                    onChange={handleSearchChange} 
+                                    className="search-input shadow-sm py-2 border-info"
+                                />
+                            </div>
+                        </div>
+                        <div className={`col-4 col-md-2 py-2 category-name badge text-bg-success my-auto ${i18n.language === 'ar' ? 'ms-2' : 'me-2'}`}>
+                            {i18n.language === 'ar' ? categoryName_ar : categoryName}
                         </div>
                     </div>
                     <div className="row">
@@ -141,7 +149,7 @@ export default function Products() {
                             filteredProducts.map((product) => (
                                 <div key={product.id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
                                     <Link to={`/products/${product.id}`} className="text-decoration-none text-dark">
-                                        <div className="card my-card h-100 shadow position-relative"style={{ maxWidth: '18rem' }}>
+                                        <div className="card my-card h-100 shadow position-relative">
                                             <img src={`http://localhost:8000/images/${product.image_url}`} className="card-img-top" alt={product.name} />
                                             <div className="badge w-100 product-badge d-flex align-items-center justify-content-center position-absolute bottom-50" 
                                                 style={{color: 'white', textAlign: 'center', padding: '10px 0' }}>
@@ -166,8 +174,8 @@ export default function Products() {
                                             </button>
                                             <div className="card-body">
                                                 <div className='d-flex justify-content-between'>
-                                                    <h6 className="card-title h-card">{i18n.language === 'ar' && product.name_ar ? product.name_ar : product.name}</h6>
-                                                    <span className="badge text-bg-success my-auto">{i18n.language === 'ar' && product.category_ar ? product.category_ar : product.category}</span>
+                                                    <h6 className="card-title">{i18n.language === 'ar' && product.name_ar ? product.name_ar : product.name}</h6>
+                                                    {/* <span className="badge text-bg-success my-auto">{i18n.language === 'ar' && product.category_ar ? product.category_ar : product.category}</span> */}
                                                 </div>
                                                 <p className="card-text text-success">{product.price} EGP</p>
                                                 <hr />

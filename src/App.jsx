@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './i18n';
-import axios from 'axios';
 import i18n from './i18n';
+import axios from 'axios';
 import './index.css';
 import Navbar from './Components/Navbar/Navbar';
 import Register from './Components/Register/Register';
@@ -68,7 +68,7 @@ export default function App() {
             <Route path="/reset" element={<ResetPassword />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/catagories" element={<Categories />} />
+            <Route path="/Categories" element={<Categories />} />
             <Route path="/products/category/:categorySlug" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

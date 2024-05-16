@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import contactImg from '../img/Contact us-amico 1.png';
-import contactImgAr from '../img/all/اتصل بنا.jpg'
+import contactImg from '../img/Contact us-amico 1.jpg';
 import './contact.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -72,8 +71,8 @@ export default function Contact() {
                 <div>
                     <h1 className="text-center pt-5">{t('contact.title')}</h1>
                 </div>
-                <div className='container'>
-                    <div className='row mt-5 justify-content-center'>
+                <div className='container my-5'>
+                    <div className='row my-5 justify-content-center'>
                         <div className='col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 order-2 order-md-1 mx-auto rounded shadow-sm p-4 bg-light'>
                             <form onSubmit={handleSubmit} className='contact-form'>
                                 <div className='mb-3'>
@@ -125,9 +124,9 @@ export default function Contact() {
                                 </div>
                             </form>
                         </div>
-                        <div className='col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 order-1 order-md-2 py-5'>
+                        <div className='col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 order-1 order-md-2  mx-auto'>
                             <div className='text-center'>
-                                <img src={i18n.language === 'ar' ? contactImgAr : contactImg} alt={t('contact.title')} className="img-fluid mb-4" />
+                                <img src={i18n.language === 'ar' ? contactImg : contactImg} alt={t('contact.title')} className="img-fluid" />
                             </div>
                         </div>
                     </div>
