@@ -12,10 +12,7 @@
 .contact-form span {
     border-radius: 0 ;
 }
-[dir='rtl'] .contact-form span {
-    transform: scaleX(-1);
 
-}
 
 @media (max-width: 768px) {
 .map-container {

@@ -2,11 +2,11 @@ body {
     padding-top: 7rem; /* Adjust this value based on the height of your navbar */
 }
 header{
-    z-index: 100000000000000 !important;
+    z-index: 1045 !important;
 }
 .nav-bar{
     background-color: #2C73EB;
-    z-index: 100000000000000 !important;
+    z-index: 1045 !important;
 }
 a {
     color: #fff !important;
@@ -37,13 +37,108 @@ a {
 .fa-bars:before, .fa-navicon:before {
     color: white;
 }
+.switch-style{
+    height: 40vh;
+    margin-left: 1.9rem;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+}
 
+.switch > span {
+    position: absolute;
+    top: 9.5px;
+    pointer-events: none;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+    width: 50%;
+    text-align: center;
+}
+
+input.check-toggle-round-flat:checked ~ .off {
+    color: #fff;
+}
+
+input.check-toggle-round-flat:checked ~ .on {
+    color: #2C73EB;
+}
+
+.switch > span.on {
+    left: 0;
+    padding-left: 2px;
+    color: #fff;
+}
+
+.switch > span.off {
+    right: 0;
+    padding-right: 4px;
+    color: #2C73EB;
+}
+
+.check-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+.check-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input.check-toggle-round-flat + label {
+    padding: 2px;
+    width: 97px;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 60px;
+}
+input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+input.check-toggle-round-flat + label:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: #fff;
+    border-radius: 60px;
+}
+input.check-toggle-round-flat + label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 48px;
+    background-color: #2C73EB;
+    border-radius: 52px;
+    -webkit-transition: margin 0.2s;
+    -moz-transition: margin 0.2s;
+    -o-transition: margin 0.2s;
+    transition: margin 0.2s;
+}
+input.check-toggle-round-flat:checked + label:after {
+margin-left: 41px;
+}
 
 /* RTL adjustments if needed (uncomment if you observe issues in testing) */
 [dir='rtl'] .badge {
-    right: 25%; /* Keep the same right offset in RTL */
+    right: 15%; /* Keep the same right offset in RTL */
 }
 [dir='rtl'] .icon-cart {
+    transform: scaleX(-1); /* Flips the icon horizontally */
+}
+[dir='rtl'] .bi-cart3::before {
     transform: scaleX(-1); /* Flips the icon horizontally */
 }
 [dir='rtl'] .icons {
@@ -71,6 +166,9 @@ a {
     margin-left: 0 !important;
     padding-right: 0.3rem !important;
 }
+[dir='rtl'] .dropdown-toggle::after{
+    margin-right: .255rem !important;
+}
 .shop{
     padding-right: 0.5rem !important;
 }
@@ -81,6 +179,26 @@ a {
 @media (max-width: 768px) {
     .dropdown-menu[data-bs-popper] {
         left: 60% !important;
+    }
+
+    span.on{
+        width: 12% !important;
+    }
+    span.off{
+        right: 63% !important;
+        width: 37% !important;
+    }
+
+    [dir='rtl'] span.on{
+        left: 63% !important;
+        width: 37% !important;
+    }
+    [dir='rtl'] span.off{
+        width: 12% !important;
+        right: 0 !important;
+    }
+    [dir='rtl'] .badge {
+        right: -7%; /* Keep the same right offset in RTL */
     }
 }
 

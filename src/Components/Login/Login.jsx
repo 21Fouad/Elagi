@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate ,useLocation  } from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { useSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../AuthContext';
-import 'react-toastify/dist/ReactToastify.css';
 import logo from '../img/Logo.png';
 import لوجو from '../img/all/لوجو.png'
 import imgg from '../img/7a473db50a795cb375d2e19267beb169.png';
@@ -12,6 +11,7 @@ import './login.css';
 
 export default function Login() {
     const { t, i18n } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,9 +35,9 @@ export default function Login() {
     React.useEffect(() => {
     
         if (message) {
-            toast.success(message);
+            enqueueSnackbar(message, { variant: 'success' });
         }
-    }, [message]);
+    }, [message,enqueueSnackbar]);
     
 
     const [email, setEmail] = useState('');
@@ -57,8 +57,7 @@ export default function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        toast.info(t('login.logging_in'), { position: "top-center" });
-    
+        enqueueSnackbar(t('login.logging_in'), { variant: 'info' });
         try {
             const response = await axios.post('http://localhost:8000/api/login', {
                 email,
@@ -83,7 +82,7 @@ export default function Login() {
     
             // Use response data or fallback to a default error message
             const errorMessage = error.response?.data?.error || t('login.error_message');
-            toast.error(errorMessage, { position: "top-center" });
+            enqueueSnackbar(errorMessage, { variant: 'error' });
     
             // Set error for display in the form
             setError(errorMessage);
@@ -92,7 +91,6 @@ export default function Login() {
 
     return (
         <>
-            <ToastContainer />
             <section className='login'>
                 <div className='container'>
                     <div className='row align-items-center justify-content-center min-vh-100'>

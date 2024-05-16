@@ -328,7 +328,7 @@
         "quantity": "الكمية",
         "subtotal": "المجموع الفرعي",
         "action": "الإجراء",
-        "total": "المجموع",
+        "total": "اجمالي السعر",
         "proceed": "المتابعة للدفع",
         "clear_all": "إفراغ السلة",
         "remove": "إزالة",
@@ -339,7 +339,8 @@
         "update_fail": "فشل في تحديث الكمية",
         "remove_fail": "فشل في إزالة المنتج من السلة",
         "cartClearSuccess": "تم إفراغ السلة بنجاح",
-        "cartClearError": "فشل في إفراغ السلة"
+        "cartClearError": "فشل في إفراغ السلة",
+        "total_quantity": "الكمية الإجمالية"
     },
     "checkout": {
         "address_label": "العنوان:",

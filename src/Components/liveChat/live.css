@@ -1,0 +1,47 @@
+/* live.css */
+[dir='rtl'] .crisp-client .crisp-1rjpbb7,
+[dir='rtl'] .crisp-client .crisp-kukhz1,
+[dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-nsge .cc-ujvn .cc-1fs0 {
+    right: auto !important; 
+    left: 15px; /* Set a left position to move it to the other side */
+}
+
+[dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-1hqb{
+    right:  70% !important;
+}
+[dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-nsge {
+    right: 95% !important; /* Tablet screens adjustment */
+}
+/* live.css */
+
+/* Rules for mobile screens */
+@media (max-width: 767px) { 
+    [dir='rtl'] .crisp-client .crisp-1rjpbb7,
+    [dir='rtl'] .crisp-client .crisp-kukhz1 {
+        right: auto; 
+        left: 15px; 
+    }
+
+    [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-1hqb {
+        right: 50% !important;
+    }
+    [dir='rtl'] .crisp-client .cc-tlyw[data-full-view=true] .cc-kxkl .cc-nsge {
+        right: 85% !important; 
+    }
+} 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    [dir='rtl'] .crisp-client .crisp-1rjpbb7,
+    [dir='rtl'] .crisp-client .crisp-kukhz1 {
+        right: auto; 
+        left: 15px; 
+    }
+
+    [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-1hqb {
+        right: 50% !important;
+    }
+    [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-nsge {
+        right: 91% !important; 
+        bottom: 13px !important;
+    }
+}

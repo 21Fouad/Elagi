@@ -46,7 +46,7 @@ const ChatbotComponent = () => {
 
   return (
     <div>
-      {/* Placeholder for chatbot if needed */}
+      
     </div>
   );
 };

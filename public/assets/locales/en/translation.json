@@ -256,7 +256,7 @@
         "description": "Welcome to Elagi, your premier destination for high-quality healthcare products delivered right to your doorstep. At Elagi, we're committed to providing you with convenient access to a wide range of medicines, supplements, wellness products, and more, all at competitive prices.",
         "Ftitle": "In Elagi, you can find",
         "fastShipping": "Fast Delivery",
-        "support247": "Support 24/7",
+        "support247": "24/7 Support ",
         "qualityAssurance": "Quality Assurance"
     },
     "contact": {
@@ -329,7 +329,7 @@
         "quantity": "Quantity",
         "subtotal": "Subtotal",
         "action": "Action",
-        "total": "Total",
+        "total": "Total Price",
         "proceed": "Proceed to Checkout",
         "clear_all":"Clear All Cart",
         "remove": "Remove",
@@ -340,7 +340,8 @@
         "update_fail": "Failed to update quantity",
         "remove_fail": "Failed to remove from cart",
         "cartClearSuccess": "Cart cleared successfully",
-        "cartClearError": "Failed to clear the cart"
+        "cartClearError": "Failed to clear the cart",
+        "total_quantity": "Total Quantity"
     },
     "checkout": {
         "address_label": "Address:",

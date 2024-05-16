@@ -5,14 +5,14 @@ import logoNavEn from '../img/logonav.png';
 import logoNavAr from '../img/all/لوجو.png';
 import vector from '../img/Vector.png';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 import { useCart } from '../CartContext';
 import { useAuth } from '../AuthContext'; 
 
 export default function Navbar() {
     const { t, i18n} = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [showDiv, setShowDiv] = useState(true);
@@ -36,7 +36,7 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         setIsLoading(true);
-        toast.info('🔒 Logging you out... See you again soon!', { position: "top-center" });
+        enqueueSnackbar('🔒 Logging you out... See you again soon!', { variant: 'info' });
         try {
             const token = localStorage.getItem('userToken');
             await axios.post('http://localhost:8000/api/logout', {}, {
@@ -47,10 +47,11 @@ export default function Navbar() {
             localStorage.removeItem('userToken');
             logout(); 
             navigate('/login', { replace: true });
-            toast.success('✨ You have been successfully logged out!', { position: "top-center" });
+            enqueueSnackbar('✨ You have been successfully logged out!', { variant: 'success' });
         } catch (error) {
             console.error('Logout error:', error);
-            toast.error('Something went wrong. Please try again.', { position: "top-center" });
+            enqueueSnackbar('Something went wrong. Please try again.', { variant: 'error' });
+
         } finally {
             setIsLoading(false);
         }
@@ -64,9 +65,15 @@ export default function Navbar() {
         i18n.changeLanguage(language);
     };
 
+    // Toggle function for the language based on checkbox state
+    const toggleLanguage = () => {
+        const newLang = i18n.language === 'en' ? 'ar' : 'en';
+        handleLanguageChange(newLang);
+    };
+    
+
     return (
         <>
-            <ToastContainer />
             {showDiv && (
                 <header className="container-fluid bg-white text-black text-center py-2 position-fixed top-0">
                     <div className="row align-items-center justify-content-around">
@@ -85,7 +92,7 @@ export default function Navbar() {
                     </div>
                 </header>
             )}
-            <nav className={`navbar navbar-expand-lg ${scroll ? "bg-primary" : "bg-primary"} fixed-top ${!showDiv ? '' : 'mt-5'}`}>
+            <nav className={`navbar navbar-expand-lg nav-tabs ${scroll ? "bg-primary" : "bg-primary"} fixed-top ${!showDiv ? '' : 'mt-5'}`}>
                 <div className="container">
                     <a className="navbar-brand" href="/home">
                         <img src={i18n.language === 'ar' ? logoNavAr : logoNavEn} alt="Logo" width="121" height="37" className="d-inline-block align-text-top"/>
@@ -93,12 +100,16 @@ export default function Navbar() {
                     {/* Icons for small screens */}
                             <div  className='d-lg-none icons ms-auto'>
                                 <Link to="/cart" className="nav-link d-inline position-relative mt-1">
-                                    <i className="fas fa-shopping-cart text-white fa-2x icon-cart"></i>
-                                    {cartQuantity > 0 && <span className="position-absolute top-25 start-75 mt-1 translate-middle badge rounded-pill bg-danger">{cartQuantity}</span>}
+                                    <span className='rounded-circle bg-white px-1'>
+                                        <i className="bi bi-cart3 text-primary fa-1x icon-cart"></i>
+                                    </span>
+                                    {cartQuantity > 0 && <span className="position-absolute top-25 start-75 mt-3 translate-middle badge rounded-pill bg-danger">{cartQuantity}</span>}
                                 </Link>
-                                <span className='text-white fa-2x px-2 ps-3'>|</span>
+                                <span className='text-white fa-2x px-2'>|</span>
                                 <a className="nav-link dropdown-toggle d-inline" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i className="fas fa-user-circle text-white fa-2x"></i>
+                                    <span className='rounded-circle bg-white px-1'>
+                                        <i className="bi bi-person text-primary fa-1x"></i>
+                                    </span>
                                 </a>
                                 <ul className="dropdown-menu">
                                     <li>
@@ -113,39 +124,42 @@ export default function Navbar() {
                                     </li>
                                 </ul>
                             </div>                        
-                    <button className="navbar-toggler" type="button" onClick={() => setIsNavCollapsed(!isNavCollapsed)} data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation">
-                        <span ><i className="fa-solid fa-bars fa-2x"></i></span>
+                    <button className="navbar-toggler mt-2" type="button" onClick={() => setIsNavCollapsed(!isNavCollapsed)} data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation">
+                        <span ><i className="fa-solid fa-bars fa-1x"></i></span>
                     </button>
                     <div className={`collapse navbar-collapse ${!isNavCollapsed ? 'show' : ''}`} id="navbarNavDropdown">
-                        <ul className="navbar-nav mx-auto fw-bold">
-                            <li className="nav-item">
-                                <Link className="nav-link active bg-transparent" aria-current="page" to="/home">{t('navigation.home')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/catagories">{t('navigation.categories')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/products">{t('navigation.products')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/features">{t('navigation.features')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/about">{t('navigation.about_us')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/contact">{t('navigation.contact_us')}</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/help">{t('navigation.help_faq')}</Link>
-                            </li>
-                        </ul>
+                    <ul className="navbar-nav nav-tabs mx-auto fw-bold">
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} aria-current="page" to="/home">{t('navigation.home')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/Categories">{t('navigation.categories')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/products">{t('navigation.products')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/features">{t('navigation.features')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/about">{t('navigation.about_us')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/contact">{t('navigation.contact_us')}</NavLink>
+    </li>
+    <li className="nav-item">
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/help">{t('navigation.help_faq')}</NavLink>
+    </li>
+</ul>
+
                         {/* Icons for large screens */}
                         {isLoggedIn ? (
-                            <ul className='licons navbar-nav d-none d-lg-flex'>
+                            <ul className='licons navbar-nav d-none d-lg-flex align-items-baseline'>
                                 <li className="nav-item position-relative mt-2">
                                     <Link to="/cart" className="nav-link d-inline position-relative">
-                                        <i className="fas fa-shopping-cart text-white fa-2x icon-cart"></i>
+                                        <span className='rounded-circle bg-white px-1'>
+                                            <i className="bi bi-cart3 text-primary fa-1x icon-cart"></i>
+                                        </span>
                                         {cartQuantity > 0 && (
                                             <span className="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger cart-badge">
                                                 {cartQuantity}
@@ -154,9 +168,11 @@ export default function Navbar() {
                                     </Link>
                                 </li>
                                 <li className='text-white fa-2x ps-1'>|</li>
-                                <li className="nav-item dropdown">
+                                <li className="nav-item dropdown mt-2">
                                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                        <i className="fas fa-user-circle text-white fa-2x"></i>
+                                    <span className='rounded-circle bg-white px-1'>
+                                        <i className="bi bi-person text-primary fa-1x icon-cart"></i>
+                                    </span>
                                     </a>
                                     <ul className="dropdown-menu ">
                                         <li>
@@ -180,16 +196,13 @@ export default function Navbar() {
                                 </li>
                             </ul>
                         )}
-                        <div className="navbar-nav lang mt-2">
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {i18n.language === 'ar' ? 'العربية' : 'English'}
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><button className="dropdown-item" onClick={() => handleLanguageChange('en')}>English</button></li>
-                                <li><button className="dropdown-item" onClick={() => handleLanguageChange('ar')}>العربية</button></li>
-                                </ul>
-                            </li>
+                        <div className="navbar-nav lang">
+                            <div className="switch">
+                                <input id="language-toggle" className="check-toggle check-toggle-round-flat" type="checkbox" checked={i18n.language === 'en'} onChange={toggleLanguage}/>
+                                <label htmlFor="language-toggle"></label>
+                                <span className="on">AR</span>
+                                <span className="off">EN</span>
+                            </div>
                         </div>
                     </div>
                 </div>

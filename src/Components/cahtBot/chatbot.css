@@ -1,6 +1,13 @@
 /* #chatbase-bubble-button{
     bottom: 80px !important;
 }
+
+#closeIcon{
+    margin-top: 10px !important;
+} */
+
+
+
 [dir='rtl'] #chatbase-bubble-button {
     position: fixed;   
     left: 20px !important;      
@@ -9,10 +16,23 @@
 
 [dir='rtl'] #chatbase-bubble-window {
     position: fixed;
-    bottom: 6.5rem !important;   
     left: 20px !important;      
     right: auto !important;    
 }
-#closeIcon{
-    margin-top: 10px !important;
-} */
+#chatbase-bubble-button {
+    bottom: 6rem !important;
+    right: 1.5rem !important;
+}
+
+@media (max-width: 768px) { 
+    #chatbase-bubble-button {
+        bottom: 5rem !important;
+        right: 0.9rem !important;
+    }
+
+    [dir='rtl'] #chatbase-bubble-button {
+        position: fixed;   
+        left: 10px !important;      
+        right: auto !important;    
+    }
+}
