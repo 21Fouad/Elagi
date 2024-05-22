@@ -22,7 +22,7 @@ export default function ProductDetail() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/products/${productId}`);
+                const response = await axios.get(`http://localhost:8000/api/medicines/${productId}`);
                 setProduct(response.data);
             } catch (error) {
                 console.error('Error fetching product details:', error);

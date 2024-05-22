@@ -74,9 +74,9 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/feedback" element={<FeedbackForm />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/products" element={<Products />} />
+            <Route path="/medicines" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route path="/medicines/:productId" element={<ProductDetail />} />
             <Route path="/order" element={<OrdersPage />} />
             <Route path="/rare" element={<RareMedicine />} />
             <Route path="/favorite" element={<Favourite />} />

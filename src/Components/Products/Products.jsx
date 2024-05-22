@@ -26,7 +26,7 @@ export default function Products() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                let url = 'http://localhost:8000/api/products';
+                let url = 'http://localhost:8000/api/medicines';
                 if (categorySlug) {
                     url += `/category/${categorySlug}`;
                 }
@@ -148,7 +148,7 @@ export default function Products() {
                         {filteredProducts.length > 0 ? (
                             filteredProducts.map((product) => (
                                 <div key={product.id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <Link to={`/products/${product.id}`} className="text-decoration-none text-dark">
+                                    <Link to={`/medicines/${product.id}`} className="text-decoration-none text-dark">
                                         <div className="card my-card h-100 shadow position-relative">
                                             <img src={`http://localhost:8000/images/${product.image_url}`} className="card-img-top" alt={product.name} />
                                             <div className="badge w-100 product-badge d-flex align-items-center justify-content-center position-absolute bottom-50" 

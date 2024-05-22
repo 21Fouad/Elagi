@@ -136,7 +136,7 @@ export default function Navbar() {
         <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/Categories">{t('navigation.categories')}</NavLink>
     </li>
     <li className="nav-item">
-        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/products">{t('navigation.products')}</NavLink>
+        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/medicines">{t('navigation.products')}</NavLink>
     </li>
     <li className="nav-item">
         <NavLink className={({ isActive }) => "nav-link" + (isActive ? " text-primary bg-white" : "")} to="/features">{t('navigation.features')}</NavLink>
