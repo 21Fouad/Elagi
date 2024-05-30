@@ -186,12 +186,12 @@
     },
     "features": {
         "title": "Our Features",
-        "chat_bot": "Chat bot",
+        "rareMedicine": "Rare Medicine",
         "medical_tests": "Medical Tests",
         "prescription": "Prescription",
         "donation": "Donation",
         "description": {
-            "chat_bot": "Our chatbot is here to help you find answers to your questions 24/7. Whether you need information about medications, assistance with your order, or guidance on health-related queries, our chatbot is always available to provide prompt and personalized support.",
+            "rareMedicine": "The Rare Medicine Request feature enables users to request uncommon medications through a simple form, automatically populating their profile details and supporting both English and Arabic languages. It ensures efficient handling of requests with immediate feedback and confirmation.",
             "medical_tests": "Access your medical test results with ease. Upload your test reports, and within moments, you'll have your results at your fingertips.",
             "prescription": "Upload your prescription by simply taking a photo or directly uploading it. Once uploaded, our system instantly converts the prescription into digital text then you will see the medicine you want or it's alternative.",
             "donation": "If you want to support those in need who are unable to afford their medications, you can now donate funds securely through our platform using Visa."
@@ -239,6 +239,7 @@
     "rare_medicine": {
         "request_form": "Rare Medicine Request",
         "medicine_name": "Medicine Name",
+        "quantity_message": "Quantity must be between 1 and 3.",
         "address": "Address",
         "quantity": "Quantity",
         "submit_request": "Submit Request",

@@ -15,6 +15,7 @@ export default function RareMedicineForm() {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [showThankYou, setShowThankYou] = useState(false);
+    const [quantityMessage, setQuantityMessage] = useState('');
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -35,14 +36,26 @@ export default function RareMedicineForm() {
         };
 
         fetchUserData();
-    }, [t,enqueueSnackbar]);
+    }, [t, enqueueSnackbar]);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        if (name === 'quantity') {
+            if (value < 1 || value > 3) {
+                setQuantityMessage(t('rare_medicine.quantity_message'));
+            } else {
+                setQuantityMessage('');
+            }
+        }
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (formData.quantity < 1 || formData.quantity > 3) {
+            enqueueSnackbar(t('rare_medicine.quantity_message'), { variant: 'error' });
+            return;
+        }
         try {
             await axios.post('http://localhost:8000/api/store-rare-medicine', formData, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('userToken')}` }
@@ -72,7 +85,7 @@ export default function RareMedicineForm() {
                     <div className='col-md-6 mx-auto'>
                         <h1 className="text-center mb-4">{t('rare_medicine.request_form')}</h1>
                         <form onSubmit={handleSubmit} className='bg-light p-4 rounded shadow'>
-                        <div className='mb-3'>
+                            <div className='mb-3'>
                                 <label htmlFor="name" className='form-label'>{t('profile.full_name')}</label>
                                 <input
                                     type="text"
@@ -121,8 +134,12 @@ export default function RareMedicineForm() {
                                     className='form-control'
                                     name="quantity"
                                     value={formData.quantity}
-                                    disabled 
+                                    onChange={handleChange}
+                                    min="1"
+                                    max="3"
+                                    required
                                 />
+                                {quantityMessage && <div className="text-danger">{quantityMessage}</div>}
                             </div>
                             <button type="submit" className="btn btn-primary w-100" disabled={isLoading}>
                                 {isLoading ? t('form.sending') : t('rare_medicine.submit_request')}
@@ -134,4 +151,3 @@ export default function RareMedicineForm() {
         </>
     );
 }
-

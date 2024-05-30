@@ -78,7 +78,7 @@ export default function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/medicines/:productId" element={<ProductDetail />} />
             <Route path="/order" element={<OrdersPage />} />
-            <Route path="/rare" element={<RareMedicine />} />
+            <Route path="/features/rareMedicine" element={<RareMedicine />} />
             <Route path="/favorite" element={<Favourite />} />
             <Route path="/features" element={<Features />} />
               <Route path="/features/chatBot" element={<ChatbotComponent />} />

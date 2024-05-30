@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import botImg from '../img/featureImgs/Chatbots-for-pharma.jpg';
+import raremedicine from '../img/featureImgs/raremedicine.jpg';
 import medicalTestImg from '../img/featureImgs/calcium-blood-test-logo.avif';
 import preImg from '../img/featureImgs/prescription-img.jpg';
 import donationImg from '../img/featureImgs/donation-img.jpg';
@@ -20,18 +20,9 @@ export default function Features() {
             return new bootstrapBundleMin.Popover(popoverTriggerEl);
         });
     }, []);
-        // Function to programmatically open the chatbot
-        const openChatbot = () => {
-            // Trigger chatbot to open
-            // This might involve simulating a click on the chatbot's button
-            // Or calling a method provided by the chatbot's API
-            const chatbotButton = document.querySelector('#chatbase-bubble-button'); // Update selector to match your chatbot's button
-            if (chatbotButton) {
-                chatbotButton.click();
-            }
-        };
+
         const features = [
-            { name: t("features.chat_bot"), img: botImg, description: t("features.description.chat_bot") ,action: openChatbot },
+            { name: t("features.rareMedicine"), img: raremedicine, description: t("features.description.rareMedicine") , slug: "rareMedicine" },
             { name: t("features.medical_tests"), img: medicalTestImg, description: t("features.description.medical_tests"), slug: "medicalTest" },
             { name: t("features.prescription"), img: preImg, description: t("features.description.prescription"), slug: "prescription" },
             { name: t("features.donation"), img: donationImg, description: t("features.description.donation"), slug: "donation" }
