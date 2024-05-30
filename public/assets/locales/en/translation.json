@@ -142,7 +142,12 @@
         "favorite_remove_success": "Product removed from favorites",
         "favorite_already": "Product already in favorites",
         "favorite_fail": "Failed to add product to favorites. Please try again.",
-        "only_three": "You can only add 3 units of each product."
+        "only_three": "You can only add 3 units of each product.",
+        "sort_default": "Sort by",
+        "sort_price_asc": "Price: Low to High",
+        "sort_price_desc": "Price: High to Low",
+        "sort_name_asc": "Name: A to Z",
+        "sort_name_desc": "Name: Z to A"
     },
     "productDetail": {
         "loading": "Loading...",

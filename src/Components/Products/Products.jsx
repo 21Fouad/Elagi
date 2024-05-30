@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation, useParams} from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { CartContext } from '../CartContext'; 
 import { useFavorites } from '../FavoritesContext';
-import './product.css'
-
+import './product.css';
 
 export default function Products() {
     const { t, i18n } = useTranslation();
@@ -20,84 +19,86 @@ export default function Products() {
     const { categorySlug } = useParams();
     const { cartItems, addToCart } = useContext(CartContext);
     const { favorites, toggleFavorite } = useFavorites();
-    const { categoryName, categoryName_ar } = location.state || { categoryName: '', categoryName_ar: '' }; // Fallback if no state is passed
-
+    const { categoryName, categoryName_ar } = location.state || { categoryName: '', categoryName_ar: '' };
+    const [sortOption, setSortOption] = useState('');
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                let url = 'http://localhost:8000/api/medicines';
+                let url;
                 if (categorySlug) {
-                    url += `/category/${categorySlug}`;
-                }
-                url += `?page=${currentPage}`;
-    
-                const response = await axios.get(url);
-                // Check if the response structure differs when a category slug is used
-                if (categorySlug) {
-                    // Assuming when fetching by category, the response data is directly in response.data
-                    setProducts(response.data);
+                    url = `http://localhost:8000/api/medicines/category/${categorySlug}?page=${currentPage}`;
                 } else {
-                    // Assuming the normal list comes with pagination structure
-                    setProducts(response.data.data || []);
-                    setTotalPages(response.data.last_page || 0);
+                    url = `http://localhost:8000/api/medicines?page=${currentPage}&sort=${sortOption}`;
                 }
+
+                const response = await axios.get(url);
+                setProducts(response.data.data || []);
+                setTotalPages(response.data.last_page || 0);
             } catch (error) {
                 console.error('Error fetching products:', error);
                 enqueueSnackbar(t('products.fetch_error'), { variant: 'error' });
                 setProducts([]);
-                if (!categorySlug) {
-                    setTotalPages(0);
-                }
+                setTotalPages(0);
             }
         };
         fetchProducts();
-    }, [categorySlug, currentPage,enqueueSnackbar,t]);
-    
+    }, [categorySlug, currentPage, sortOption, enqueueSnackbar, t]);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
         setSearchAttempted(true);
     };
-    
+
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+    };
+
+    const getSortedProducts = (products, sortOption) => {
+        switch (sortOption) {
+            case 'price_asc':
+                return [...products].sort((a, b) => a.price - b.price);
+            case 'price_desc':
+                return [...products].sort((a, b) => b.price - a.price);
+            case 'name_asc':
+                return [...products].sort((a, b) => a.name.localeCompare(b.name));
+            case 'name_desc':
+                return [...products].sort((a, b) => b.name.localeCompare(a.name));
+            default:
+                return products;
+        }
+    };
+
     const filteredProducts = searchTerm.trim() === '' 
-        ? products 
-        : products.filter(product =>
+        ? getSortedProducts(products, sortOption)
+        : getSortedProducts(products.filter(product =>
             (product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
             (product.name_ar && product.name_ar.toLowerCase().includes(searchTerm.toLowerCase())))
-        );
+        ), sortOption);
 
+    const handleAddToCart = async (product, event) => {
+        event.preventDefault();
+        if (!product || product.stock === 0) {
+            enqueueSnackbar(t('products.stock_out'), { variant: 'error' });
+            return;
+        }
 
-        const handleAddToCart = async (product, event) => {
-            event.preventDefault();
-            if (!product || product.stock === 0) {
-                enqueueSnackbar(t('products.stock_out'), { variant: 'error' });
-                return;
-            }
-        
-            // Check if the product is already in the cart and count its quantity
-            const existingItem = cartItems.find(item => item.product.id === product.id);
-            const currentQuantity = existingItem ? existingItem.quantity : 0;
-        
-            if (currentQuantity >= 3) {
-                enqueueSnackbar(t('products.order_limit'), { variant: 'error' });
-                return;
-            }
-        
-            if (currentQuantity > product.stock) {
-                enqueueSnackbar(t('products.stock_limit'), { variant: 'error' });
-                return;
-            }
-        
-            // If the conditions are met, add the product to the cart
-            enqueueSnackbar(t('products.cart_add_success'), { variant: 'success' });
-            addToCart(product, 1);
-        };
-        
-        
+        const existingItem = cartItems.find(item => item.product.id === product.id);
+        const currentQuantity = existingItem ? existingItem.quantity : 0;
 
-        
-        
+        if (currentQuantity >= 3) {
+            enqueueSnackbar(t('products.order_limit'), { variant: 'error' });
+            return;
+        }
+
+        if (currentQuantity > product.stock) {
+            enqueueSnackbar(t('products.stock_limit'), { variant: 'error' });
+            return;
+        }
+
+        enqueueSnackbar(t('products.cart_add_success'), { variant: 'success' });
+        addToCart(product, 1);
+    };
 
     const handleDisabledClick = (product) => {
         const existingItem = cartItems.find(item => item.product.id === product.id);
@@ -105,23 +106,21 @@ export default function Products() {
             enqueueSnackbar(t('products.only_three'), { variant: 'error' });
         }
     };
-    // Render pagination controls
-        
+
     const goToPreviousPage = () => {
-    setCurrentPage((prevCurrent) => Math.max(prevCurrent - 1, 1));
+        setCurrentPage((prevCurrent) => Math.max(prevCurrent - 1, 1));
     };
 
     const goToNextPage = () => {
-    setCurrentPage((prevCurrent) => Math.min(prevCurrent + 1, totalPages));
+        setCurrentPage((prevCurrent) => Math.min(prevCurrent + 1, totalPages));
     };
 
     const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+        setCurrentPage(pageNumber);
     };
-    
 
     return (
-            <>
+        <>
             <section className='my-5'>
                 <div className='text-center mb-4'>
                     <h1>{t('products.header')}</h1>
@@ -140,9 +139,26 @@ export default function Products() {
                                 />
                             </div>
                         </div>
-                        <div className={`col-4 col-md-2 py-2 category-name badge text-bg-success my-auto ${i18n.language === 'ar' ? 'ms-2' : 'me-2'}`}>
-                            {i18n.language === 'ar' ? categoryName_ar : categoryName}
-                        </div>
+                        {!categorySlug && (
+                            <div className="col-4 col-md-3 my-4">
+                                <select 
+                                    className="form-select shadow-sm py-2 border-info"
+                                    value={sortOption}
+                                    onChange={handleSortChange}
+                                >
+                                    <option value="">{t('products.sort_default')}</option>
+                                    <option value="price_asc">{t('products.sort_price_asc')}</option>
+                                    <option value="price_desc">{t('products.sort_price_desc')}</option>
+                                    <option value="name_asc">{t('products.sort_name_asc')}</option>
+                                    <option value="name_desc">{t('products.sort_name_desc')}</option>
+                                </select>
+                            </div>
+                        )}
+                        {categorySlug && (
+                            <div className={`col-4 col-md-2 py-2 category-name badge text-bg-success my-auto ${i18n.language === 'ar' ? 'ms-2' : 'me-2'}`}>
+                                {i18n.language === 'ar' ? categoryName_ar : categoryName}
+                            </div>
+                        )}
                     </div>
                     <div className="row">
                         {filteredProducts.length > 0 ? (
@@ -175,7 +191,6 @@ export default function Products() {
                                             <div className="card-body">
                                                 <div className='d-flex justify-content-between'>
                                                     <h6 className="card-title">{i18n.language === 'ar' && product.name_ar ? product.name_ar : product.name}</h6>
-                                                    {/* <span className="badge text-bg-success my-auto">{i18n.language === 'ar' && product.category_ar ? product.category_ar : product.category}</span> */}
                                                 </div>
                                                 <p className="card-text text-success">{product.price} EGP</p>
                                                 <hr />
@@ -238,9 +253,7 @@ export default function Products() {
                         </li>
                     </ul>
                 </nav>
-    
             </section>    
         </>
     );
-    
 }
