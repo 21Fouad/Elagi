@@ -202,17 +202,20 @@
         }
     },
     "medical_test": {
-        "upload_title": "تحميل التحليل الطبي",
-        "select_file": "الرجاء اختيار ملف أولا.",
-        "uploading": "جاري التحميل...",
+        "upload_title": "تحميل التحليل طبي",
+        "select_file_or_enter_level": "يرجى اختيار صورة التحليل أو إدخال مستوى الكالسيوم.",
+        "condition": "الحالة: ",
+        "status": "الحالة: ",
+        "level": "المستوى: ",
+        "value": "القيمة: ",
+        "result": "النتيجة: ",
+        "normal_range": "المدى الطبيعي: ",
+        "not_available": "غير متوفر",
+        "error_uploading": "خطأ في تحميل الاختبار الطبي: ",
         "upload": "تحميل",
-        "condition": "الحالة:",
-        "status": "الوضع:",
-        "level": "المستوى:",
-        "value": "القيمة:",
-        "result": "النتيجة:",
-        "normal_range": "النطاق الطبيعي:",
-        "error_uploading": "خطأ في تحميل الملف:"
+        "uploading": "جار التحميل...",
+        "or": "أو",
+        "calcium_level": "الكالسيوم (الكلي)"
     },
     "prescription": {
         "upload_title": "تحميل الروشتة الطبية",

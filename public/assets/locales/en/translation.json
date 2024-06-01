@@ -204,16 +204,19 @@
     },
     "medical_test": {
         "upload_title": "Upload Medical Test",
-        "select_file": "Please select a file first.",
-        "uploading": "Uploading...",
+        "select_file_or_enter_level": "Please select a file or enter the calcium level.",
+        "condition": "Condition: ",
+        "status": "Status: ",
+        "level": "Level: ",
+        "value": "Value: ",
+        "result": "Result: ",
+        "normal_range": "Normal Range: ",
+        "not_available": "Not available",
+        "error_uploading": "Error uploading the medical test: ",
         "upload": "Upload",
-        "condition": "Condition:",
-        "status": "Status:",
-        "level": "Level:",
-        "value": "Value:",
-        "result": "Result:",
-        "normal_range": "Normal Range:",
-        "error_uploading": "Error uploading file:"
+        "uploading": "Uploading...",
+        "or": "or",
+        "calcium_level": " Calcium (Total)"
     },
     "prescription": {
         "upload_title": "Upload Your Prescription",

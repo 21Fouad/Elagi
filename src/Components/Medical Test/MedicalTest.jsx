@@ -6,23 +6,35 @@ import './medicalTest.css';
 export default function MedicalTest() {
     const { t, i18n } = useTranslation();
     const [selectedFile, setSelectedFile] = useState(null);
+    const [calciumLevel, setCalciumLevel] = useState('');
     const [responseMessage, setResponseMessage] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0]);
+        setCalciumLevel(''); // Clear the manual input if a file is selected
+        setResponseMessage([]);
+    };
+
+    const handleCalciumLevelChange = (event) => {
+        setCalciumLevel(event.target.value);
+        setSelectedFile(null); // Clear the file input if a manual value is entered
         setResponseMessage([]);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!selectedFile) {
-            setResponseMessage([t("medical_test.select_file")]);
+        if (!selectedFile && !calciumLevel) {
+            setResponseMessage([t("medical_test.select_file_or_enter_level")]);
             return;
         }
 
         const formData = new FormData();
-        formData.append('file', selectedFile);
+        if (selectedFile) {
+            formData.append('file', selectedFile);
+        } else {
+            formData.append('calciumLevel', calciumLevel);
+        }
         setLoading(true);
 
         try {
@@ -35,8 +47,8 @@ export default function MedicalTest() {
             setResponseMessage([
                 `${t("medical_test.condition")} ${data.condition || t("medical_test.not_available")}`,
                 `${t("medical_test.status")} ${data.status || t("medical_test.not_available")}`,
-                `${t("medical_test.level")} ${data.nearest_condition || t("medical_test.not_available")}`,
-                `${t("medical_test.value")} ${data.extracted_value || t("medical_test.not_available")}`,
+                `${t("medical_test.level")} ${data.extracted_value || t("medical_test.not_available")}`,
+                `${t("medical_test.value")} ${data.nearest_condition || t("medical_test.not_available")}`,
                 `${t("medical_test.result")} ${data.nearest_result_value || t("medical_test.not_available")}`,
                 `${t("medical_test.normal_range")} ${data.reference_range || t("medical_test.not_available")}`
             ]);
@@ -65,6 +77,20 @@ export default function MedicalTest() {
                                 className="form-control visually-hidden"
                                 id="customFile"
                                 onChange={handleFileSelect}
+                            />
+                        </label>
+                        <p>{t("medical_test.or")}</p>
+                        <label htmlFor="calciumLevel" className="input-group test">
+                            <span className={`input-group-text ${i18n.language === 'ar' ? 'rounded-end' : 'rounded-start'}`}>
+                                {t("medical_test.calcium_level")}
+                            </span>
+                            <input
+                                type="number"
+                                step="0.01"
+                                className={`form-control ${i18n.language === 'ar' ? 'rounded-start' : 'rounded-end'}`}
+                                id="calciumLevel"
+                                value={calciumLevel}
+                                onChange={handleCalciumLevelChange}
                             />
                         </label>
                         <button className="btn btn-lg btn-primary btn-block my-3" type="submit" disabled={loading}>
