@@ -109,7 +109,7 @@ export default function Home() {
                                     <Link to='/products' className='text-black text-decoration-none'>{t('home.buyNow')}</Link>
                                 </button>
                             </div>
-                            <img src={offerLogo} alt={t('home.offerAlt')} className='img-fluid'/>
+                            <img src={offerLogo} alt={t('home.offerAlt')} className='img-fluid w-50'/>
                         </div>
                         <div className="col-md-5 mt-4 mt-md-0 scan-prescription rounded d-flex justify-content-between align-items-center">
                             <div className='ms-2'>
@@ -118,7 +118,7 @@ export default function Home() {
                                     <Link to='/prescription' className='text-black text-decoration-none'>{t('home.scanNow')}</Link>
                                 </button>
                             </div>
-                            <img src={scanLogo} alt={t('home.scanAlt')} className='img-fluid'/>
+                            <img src={scanLogo} alt={t('home.scanAlt')} className='img-fluid w-50'/>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className='position-absolute bottom-50 start-50 translate-middle w-75 my-4'>
+                <div className='position-absolute bottom-50 start-50 translate-middle w-100 mb-5 mb-md-0 mb-lg-3 '>
                     <div className='container'>
                         <div className='bg-white p-3 shadow d-flex justify-content-between align-items-center rounded'>
                             <p className='mb-0'>
