@@ -92,7 +92,7 @@ export default function Favourite() {
                                 <div className="card-body">
                                     <div className='d-flex justify-content-between'>
                                         <h6 className="card-title h-card">{favorite.product.name}</h6>
-                                        <span className="badge text-bg-success my-auto">{favorite.product.category}</span>
+                                        {/* <span className="badge text-bg-success my-auto">{favorite.product.category}</span> */}
                                     </div>
                                     <p className="card-text text-success">${favorite.product.price}</p>
                                 </div>
@@ -110,7 +110,7 @@ export default function Favourite() {
                 </div>
             </div>
         ) : (
-            <p className="text-center">{t('favorites.no_favorites')}</p>
+            <p className="text-center" style={{ height: "40vh" }}>{t('favorites.no_favorites')}</p>
         )}
     </div>
 </>

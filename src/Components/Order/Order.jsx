@@ -40,8 +40,8 @@ export default function OrdersPage() {
 
     if (loading) {
         return (
-            <div className="d-flex justify-content-center">
-                <Spinner animation="border" role="status">
+            <div className="d-flex justify-content-center align-items-center" style={{ height: "75vh" }}>
+                <Spinner className='text-primary' animation="border" role="status">
                     <span className="visually-hidden">{t('orders.loading')}</span>
                 </Spinner>
             </div>
