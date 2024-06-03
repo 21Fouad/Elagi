@@ -3,16 +3,15 @@
 [dir='rtl'] .crisp-client .crisp-kukhz1,
 [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-nsge .cc-ujvn .cc-1fs0 {
     right: auto !important; 
-    left: 15px; /* Set a left position to move it to the other side */
+    left: 15px;
 }
 
 [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-1hqb{
     right:  70% !important;
 }
 [dir='rtl'] .crisp-client .cc-tlyw .cc-kxkl .cc-nsge {
-    right: 95% !important; /* Tablet screens adjustment */
+    right: 95% !important; 
 }
-/* live.css */
 
 /* Rules for mobile screens */
 @media (max-width: 767px) { 
