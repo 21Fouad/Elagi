@@ -215,7 +215,8 @@
         "upload": "تحميل",
         "uploading": "جار التحميل...",
         "or": "أو",
-        "calcium_level": "الكالسيوم (الكلي)"
+        "calcium_level": "الكالسيوم (الكلي)",
+        "auth_token_missing": "يجب أن تكون مسجل الدخول لرفع الروشتة."
     },
     "prescription": {
         "upload_title": "تحميل الروشتة الطبية",
@@ -230,9 +231,11 @@
         "last_modified": "آخر تعديل:",
         "found_medicines": "الأدوية المعثور عليها",
         "not_found_medicines": "للأسف، لم يتم العثور على بعض الأدوية.",
+        "not_found": " هذا الدواء غير  متوفر حاليًا.",
         "available": "متاح",
         "alternatives": "إليك البدائل:",
-        "status": "الحالة:"
+        "status": "الحالة:",
+        "auth_token_missing": "يجب أن تكون مسجل الدخول لرفع التحليل الطبي."
     },
     "donation": {
         "thank_you": "شكرًا لك على تبرعك ❤️، الرجاء الانتظار",

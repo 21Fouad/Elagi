@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 import './medicalTest.css';
 
 export default function MedicalTest() {
     const { t, i18n } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState(null);
     const [calciumLevel, setCalciumLevel] = useState('');
     const [responseMessage, setResponseMessage] = useState([]);
     const [loading, setLoading] = useState(false);
+    const isAuthenticated = localStorage.getItem('userToken');
+
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -24,6 +30,12 @@ export default function MedicalTest() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!isAuthenticated) {
+            enqueueSnackbar(t('medical_test.auth_token_missing'), { variant: 'error' });
+            navigate('/login');
+            return;
+        }
+
         if (!selectedFile && !calciumLevel) {
             setResponseMessage([t("medical_test.select_file_or_enter_level")]);
             return;
@@ -40,7 +52,8 @@ export default function MedicalTest() {
         try {
             const response = await axios.post('http://localhost:8000/api/upload-medicalTest', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${isAuthenticated}`
                 }
             });
             const data = response.data;

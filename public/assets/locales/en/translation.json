@@ -216,7 +216,8 @@
         "upload": "Upload",
         "uploading": "Uploading...",
         "or": "or",
-        "calcium_level": " Calcium (Total)"
+        "calcium_level": " Calcium (Total)",
+        "auth_token_missing": "You must be logged in to upload medical test."
     },
     "prescription": {
         "upload_title": "Upload Your Prescription",
@@ -231,9 +232,11 @@
         "last_modified": "Last Modified:",
         "found_medicines": "Found Medicines",
         "not_found_medicines": "Unfortunately, some medicines were not found.",
+        "not_found": "this medicine not found now.",
         "available": "Available",
         "alternatives": "Here are the alternatives:",
-        "status": "Status:"
+        "status": "Status:",
+        "auth_token_missing": "You must be logged in to upload prescriptions."
     },
     "donation": {
         "thank_you": "Thank you for your donation ❤️, Please Wait",

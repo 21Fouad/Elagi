@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 import './prescription.css';
 
 export default function Prescription() {
     const { t, i18n } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [uploadStatus, setUploadStatus] = useState('');
     const [foundMedicines, setFoundMedicines] = useState([]);
     const [notFoundMedicines, setNotFoundMedicines] = useState([]);
+    const isAuthenticated = localStorage.getItem('userToken');
+
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -17,6 +23,11 @@ export default function Prescription() {
     };
 
     const handleSubmission = async () => {
+        if (!isAuthenticated) {
+            enqueueSnackbar(t('prescription.auth_token_missing'), { variant: 'error' });
+            navigate('/login');
+            return;
+        }
         if (!selectedFile) {
             setUploadStatus(t("prescription.select_file"));
             return;
@@ -28,6 +39,7 @@ export default function Prescription() {
         try {
             const response = await axios.post('http://localhost:8000/api/upload-prescription', formData, {
                 headers: {
+                    'Authorization': `Bearer ${isAuthenticated}`,
                     'Content-Type': 'multipart/form-data'
                 }
             });
