@@ -216,6 +216,7 @@
         "upload": "Upload",
         "uploading": "Uploading...",
         "or": "or",
+        "insert_manually":"Insert your calcium total rate manually",
         "calcium_level": " Calcium (Total)",
         "auth_token_missing": "You must be logged in to upload medical test."
     },

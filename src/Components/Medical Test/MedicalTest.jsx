@@ -92,7 +92,8 @@ export default function MedicalTest() {
                                 onChange={handleFileSelect}
                             />
                         </label>
-                        <p>{t("medical_test.or")}</p>
+                        <p className='mt-1'>{t("medical_test.or")}</p>
+                        <h1 className="h3 mb-3 font-weight-normal">{t("medical_test.insert_manually")}</h1>
                         <label htmlFor="calciumLevel" className="input-group test">
                             <span className={`input-group-text ${i18n.language === 'ar' ? 'rounded-end' : 'rounded-start'}`}>
                                 {t("medical_test.calcium_level")}
