@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './profile.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from 'notistack';
 
 export default function Profile() {
     const { t, i18n } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
     const [initialUserData, setInitialUserData] = useState({ name: '', email: '', phone: '' });
     const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
     const [validationError, setValidationError] = useState('');
@@ -30,13 +30,13 @@ export default function Profile() {
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching user data:', error);
-                toast.error(t('errors.fetch_error'));
+                enqueueSnackbar(t('errors.fetch_error'), { variant: 'error' });
                 setIsLoading(false);
             }
         };
 
         fetchUserData();
-    }, [t]);
+    }, [t,enqueueSnackbar]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -57,7 +57,7 @@ export default function Profile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validationError) {
-            toast.error(validationError);
+            enqueueSnackbar(validationError, { variant: 'error' });
             return;
         }
         setIsLoading(true);
@@ -66,12 +66,12 @@ export default function Profile() {
             await axios.post('http://localhost:8000/api/user/update', userData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            toast.success(t('profile.update_success'));
+            enqueueSnackbar(t('profile.update_success'), { variant: 'success' });
             setIsNameEditable(false);
             setIsPhoneEditable(false);
         } catch (error) {
             console.error('Failed to update profile:', error);
-            toast.error(t('profile.update_fail'));
+            enqueueSnackbar(t('profile.update_fail'), { variant: 'error' });
         } finally {
             setIsLoading(false);
         }
@@ -105,7 +105,6 @@ export default function Profile() {
 
     return (
         <>
-            <ToastContainer />
             <section>
                 <div className='container pt-4'>
                     <div className='row align-items-center justify-content-center min-vh-100'>
@@ -114,6 +113,7 @@ export default function Profile() {
                                 <h2>{t('profile.my_account')}</h2>
                                 <Link to='/favorite' className={`text-black text-start btn btn-outline-primary my-2 profile-link ${i18n.language === 'ar' && 'text-end'}`}>{t('profile.my_favourite')}</Link>
                                 <Link to='/order' className={`text-black text-start btn btn-outline-primary my-2 profile-link ${i18n.language === 'ar' && 'text-end'}`}>{t('profile.my_orders')}</Link>
+                                <Link to='/feedback' className={`text-black text-start btn btn-outline-primary my-2 profile-link ${i18n.language === 'ar' && 'text-end'}`}>{t('profile.my_feedback')}</Link>
                             </div>
                         </div>
                         <div className='col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto rounded shadow-lg p-4 bg-light'>

@@ -96,7 +96,7 @@ export default function Products() {
             return;
         }
 
-        enqueueSnackbar(t('products.cart_add_success'), { variant: 'success' });
+        // enqueueSnackbar(t('products.cart_add_success'), { variant: 'success' });
         addToCart(product, 1);
     };
 

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import contactImg from '../img/Contact us-amico 1.jpg';
 import './contact.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from 'notistack';
 
 export default function Contact() {
     const { t, i18n } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
     const [userData, setUserData] = useState({
         name: localStorage.getItem('userName') || '',
         email: localStorage.getItem('userEmail') || '',
@@ -20,7 +20,7 @@ export default function Contact() {
             setIsLoading(true);
             const token = localStorage.getItem('userToken');
             if (!token) {
-                toast.error(t('contact.login_required'));
+                enqueueSnackbar(t('contact.login_required'), { variant: 'error' });
                 setIsLoading(false);
                 return;
             }
@@ -32,14 +32,14 @@ export default function Contact() {
                 setUserData(prev => ({ ...prev, name, email }));
             } catch (error) {
                 console.error('Error fetching user data:', error);
-                toast.error(t('contact.fetch_failed'));
+                enqueueSnackbar(t('contact.fetch_failed'), { variant: 'error' });
             } finally {
                 setIsLoading(false);
             }
         };
 
         fetchUserData();
-    }, [t]);  // Add t to dependency array to re-run effect when language changes
+    }, [t,enqueueSnackbar]);  // Add t to dependency array to re-run effect when language changes
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,11 +54,11 @@ export default function Contact() {
         setIsLoading(true);
         try {
             await axios.post('http://localhost:8000/api/contact/save', userData);
-            toast.success(t('contact.message_sent'));
+            enqueueSnackbar(t('contact.message_sent'), { variant: 'success' });
             setUserData({ ...userData, message: '' });
         } catch (error) {
             console.error('Failed to send message:', error);
-            toast.error(t('contact.message_failed'));
+            enqueueSnackbar(t('contact.message_failed'), { variant: 'error' });
         } finally {
             setIsLoading(false);
         }
@@ -66,7 +66,6 @@ export default function Contact() {
 
     return (
         <>
-            <ToastContainer />
             <section>
                 <div>
                     <h1 className="text-center pt-5">{t('contact.title')}</h1>

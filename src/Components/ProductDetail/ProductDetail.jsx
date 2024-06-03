@@ -93,7 +93,7 @@ export default function ProductDetail() {
             return;
         }
         addToCart(product, quantity);
-        enqueueSnackbar(t('productDetail.cart_add_success'), { variant: 'success' });
+        // enqueueSnackbar(t('productDetail.cart_add_success'), { variant: 'success' });
     };
 
 

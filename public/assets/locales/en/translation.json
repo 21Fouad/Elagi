@@ -114,7 +114,7 @@
         "funded": "Projects Funded",
         "generosityMessage": "Every day, countless individuals around the world struggle to afford essential medication. Your generosity can change that.",
         "donateNow": "Donate Now",
-        "feedbackTitle": "User Feedback",
+        "feedbackTitle": "Users Feedback",
         "customer": "Customer"
     },
     "categories": {
@@ -285,6 +285,7 @@
         "my_account": "My Account",
         "my_favourite": "My Favourite",
         "my_orders": "My Orders",
+        "my_feedback":"Put Your Feedback",
         "profile": "Profile",
         "full_name": "Full Name",
         "edit": "Edit",
@@ -318,7 +319,7 @@
         "title": "My Favorite Products",
         "no_token": "No token found",
         "fetch_failed": "Failed to fetch favorites",
-        "auth_token_missing": "Authentication token not found",
+        "auth_token_missing": "You must be logged in to add products to favorites.",
         "removed_success": "Product removed from favorites",
         "remove_failed": "Failed to remove from favorites",
         "no_favorites": "You have no favorite products.",
@@ -350,7 +351,16 @@
         "remove_fail": "Failed to remove from cart",
         "cartClearSuccess": "Cart cleared successfully",
         "cartClearError": "Failed to clear the cart",
-        "total_quantity": "Total Quantity"
+        "total_quantity": "Total Quantity",
+        "auth_token_missing": "You must be logged in to add products to cart.",
+        "fetch_error": "Failed to load cart items.",
+        "max_quantity_exceeded": "You can not add more than 3 of any item.",
+        "stock_exceeded": "Not enough stock available.",
+        "add_success": "Item added to cart successfully.",
+        "add_error": "Failed to add item to cart.",
+        "remove_error": "Failed to remove item from cart.",
+        "clear_success": "Cart cleared successfully.",
+        "clear_error": "Failed to clear the cart."
     },
     "checkout": {
         "address_label": "Address:",

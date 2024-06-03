@@ -19,18 +19,15 @@ export default function Home() {
     const { t } = useTranslation();
 
     useEffect(() => {
-        const token = localStorage.getItem('userToken');
         const fetchFeedback = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/feedback', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
+                const response = await axios.get('http://localhost:8000/api/feedback');
                 setFeedbackList(response.data);
             } catch (error) {
                 console.error('Error fetching feedback:', error);
             }
         };
-        fetchFeedback(); 
+        fetchFeedback();
     }, []);
 
     const chunkedFeedbackList = (feedbackList, chunkSize) => {
