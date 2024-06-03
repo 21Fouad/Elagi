@@ -80,7 +80,7 @@ export default function Navbar() {
                         <div className="col-11">
                             <img src={vector} alt={t('navigation.offer')} width={30} height={30} className='bg-white' />
                             <p className=' ps-md-2 d-inline offerTitle'>{t('navigation.offer')}  
-                                <Link to="/products" className='text-primary ms-2 shop'>
+                                <Link to="/medicines" className='text-primary ms-2 shop'>
                                     {t('navigation.shop_now')}
                                     <i className={`fas ${i18n.language === 'ar' ? 'fa-arrow-left' : 'fa-arrow-right'} ps-1`}></i>
                                 </Link>
