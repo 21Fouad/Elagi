@@ -78,7 +78,7 @@ export default function Navbar() {
                 <header className="container-fluid bg-white text-black text-center py-2 position-fixed top-0">
                     <div className="row align-items-center justify-content-around">
                         <div className="col-11">
-                            <img src={vector} alt={t('navigation.offer')} width={24} height={24} />
+                            <img src={vector} alt={t('navigation.offer')} width={30} height={30} className='bg-white' />
                             <p className=' ps-md-2 d-inline offerTitle'>{t('navigation.offer')}  
                                 <Link to="/products" className='text-primary ms-2 shop'>
                                     {t('navigation.shop_now')}
