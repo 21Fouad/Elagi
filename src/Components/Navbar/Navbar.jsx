@@ -189,6 +189,7 @@ export default function Navbar() {
                                 <li className="nav-item">
                                     <Link to="/login" className="nav-link text-white">{t('navigation.login')}</Link>
                                 </li>
+                                <li className='text-white mt-2'>|</li>
                                 <li className="nav-item">
                                     <Link to="/register" className="nav-link text-white">{t('navigation.register')}</Link>
                                 </li>
