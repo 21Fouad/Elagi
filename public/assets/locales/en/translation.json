@@ -125,7 +125,8 @@
     "products": {
         "header": "Medicines",
         "search_placeholder": "Search medicines...",
-        "no_products_found": "Sorry, no products found for {{search}}.",
+        "no_products_found": "Sorry, no products found for '{search}'.",
+        "no_products_in_category": "Sorry, no products found in this category.",
         "add_to_cart": "Add to Cart",
         "favorite": "❤",
         "unavailable": "Unavailable",

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import './live.css'
-function ChatComponent() {
+
+function LiveChatComponent() {
         useEffect(() => {
             if (!window.$crisp) {
             window.$crisp = [];
-            window.CRISP_WEBSITE_ID = "7df05386-8225-4ae2-991f-4d285e3a2fb2"; // Replace "your-website-id" with the ID from Crisp
+            window.CRISP_WEBSITE_ID = "7df05386-8225-4ae2-991f-4d285e3a2fb2"; 
         
             (function () {
                 const d = document;
@@ -17,7 +18,7 @@ function ChatComponent() {
             }
         }, []);
         
-        return null; // This component does not render anything
+        return null;
         }
 
-export default ChatComponent;
+export default LiveChatComponent;

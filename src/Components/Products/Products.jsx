@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack';
 import { CartContext } from '../CartContext'; 
 import { useFavorites } from '../FavoritesContext';
 import './product.css';
+import { Spinner } from 'react-bootstrap';
 
 export default function Products() {
     const { t, i18n } = useTranslation();
@@ -13,6 +14,7 @@ export default function Products() {
     const { enqueueSnackbar } = useSnackbar();
     const [searchTerm, setSearchTerm] = useState('');
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [searchAttempted, setSearchAttempted] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -40,6 +42,8 @@ export default function Products() {
                 enqueueSnackbar(t('products.fetch_error'), { variant: 'error' });
                 setProducts([]);
                 setTotalPages(0);
+            }finally {
+                setIsLoading(false);
             }
         };
         fetchProducts();
@@ -118,6 +122,16 @@ export default function Products() {
     const goToPage = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    if (isLoading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: "75vh" }}>
+                <Spinner animation="border text-primary" role="status">
+                    <span className="visually-hidden">{t('loading')}</span>
+                </Spinner>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -223,12 +237,14 @@ export default function Products() {
                                     </Link>
                                 </div>
                             ))
+                        ) : searchAttempted ? (
+                            <div className="text-center my-2 text-danger w-100">
+                                <p>{t('products.no_products_found', { search: searchTerm })}</p>
+                            </div>
                         ) : (
-                            searchAttempted && (
-                                <div className="text-center text-danger w-100">
-                                    <p>{t('products.no_products_found', { search: `{${searchTerm}}` })}</p>
-                                </div>
-                            )
+                            <div className="text-center my-2 text-danger w-100">
+                                <p>{categorySlug ? t('products.no_products_in_category'): t('products.no_products_found')}</p>
+                            </div>
                         )}
                     </div>
                 </div>

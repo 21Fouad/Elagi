@@ -21,7 +21,7 @@ import NotFound from './Components/NotFound/NotFound';
 import Term from './Components/terms&conditions/Term';
 import Prescription from './Components/prescription/Prescription';
 import ChatbotComponent from './Components/cahtBot/ChatBot';
-import ChatComponent from './Components/liveChat/LiveChat';
+import LiveChatComponent from './Components/liveChat/LiveChat';
 import Products from './Components/Products/Products';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Favourite from './Components/Favourite/Favourite';
@@ -41,6 +41,7 @@ import { AuthProvider } from './Components/AuthContext';
 import { FavoritesProvider } from './Components/FavoritesContext';
 
 
+
 axios.interceptors.request.use((config) => {
   const language = i18n.language;
   config.headers['Accept-Language'] = language;
@@ -55,9 +56,7 @@ export default function App() {
         <AuthProvider>
           <FavoritesProvider>
         <Router>
-        
           <Navbar />
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
@@ -91,8 +90,8 @@ export default function App() {
             <Route path="/prescription" element={<Prescription />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <ChatbotComponent />
-          <ChatComponent />
+          <ChatbotComponent/>
+          <LiveChatComponent />
           <ScrollToTop />
           <Footer />
         </Router>

@@ -124,7 +124,8 @@
     "products": {
         "header": "الأدوية",
         "search_placeholder": "ابحث عن الأدوية...",
-        "no_products_found": "عذراً، لا يوجد منتجات لـ {{search}}.",
+        "no_products_found": "عذراً، لا يوجد منتجات لـ '{search}'.",
+        "no_products_in_category": "عذراً، لا توجد منتجات في هذه الفئة .",
         "add_to_cart": "أضف الي العربة",
         "favorite": "❤",
         "unavailable": "غير متوفر",
