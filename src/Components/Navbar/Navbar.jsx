@@ -3,7 +3,6 @@ import './navbar.css';
 import axios from 'axios';
 import logoNavEn from '../img/logonav.png';
 import logoNavAr from '../img/all/لوجو.png';
-import vector from '../img/Vector.png';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -78,7 +77,6 @@ export default function Navbar() {
                 <header className="container-fluid bg-white text-black text-center py-2 position-fixed top-0">
                     <div className="row align-items-center justify-content-around">
                         <div className="col-11">
-                            <img src={vector} alt={t('navigation.offer')} width={30} height={30} className='bg-white' />
                             <p className=' ps-md-2 d-inline offerTitle'>{t('navigation.offer')}  
                                 <Link to="/medicines" className='text-primary ms-2 shop'>
                                     {t('navigation.shop_now')}
