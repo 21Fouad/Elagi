@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
+
 
 const FavoritesContext = createContext();
 
@@ -12,6 +14,7 @@ export const FavoritesProvider = ({ children }) => {
     const [favorites, setFavorites] = useState(new Set());
     const { t} = useTranslation();
     const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
     
     const fetchFavorites = useCallback(async () => {
         const token = localStorage.getItem('userToken');
@@ -41,6 +44,7 @@ export const FavoritesProvider = ({ children }) => {
         const token = localStorage.getItem('userToken');
         if (!token) {
             enqueueSnackbar(t('favorites.auth_token_missing'), { variant: 'error' });
+            navigate('/login');
             return;
         }
     

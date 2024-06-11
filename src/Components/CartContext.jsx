@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 export const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
@@ -10,6 +11,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
     const { t } = useTranslation();
     const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -44,6 +46,7 @@ export const CartProvider = ({ children }) => {
         if (!token) {
             enqueueSnackbar(t('cart.auth_token_missing'), { variant: 'error' });
             setIsLoading(false);
+            navigate('/login'); 
             return;
         }
 

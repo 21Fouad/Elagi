@@ -52,10 +52,10 @@ axios.interceptors.request.use((config) => {
 export default function App() {
   return (
     <div>
-      <CartProvider>
-        <AuthProvider>
-          <FavoritesProvider>
         <Router>
+        <AuthProvider>
+        <FavoritesProvider>
+        <CartProvider>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -94,10 +94,10 @@ export default function App() {
           <LiveChatComponent />
           <ScrollToTop />
           <Footer />
+          </CartProvider>
+          </FavoritesProvider>
+          </AuthProvider>
         </Router>
-        </FavoritesProvider>
-        </AuthProvider>
-      </CartProvider>
     </div>
   );
 }
