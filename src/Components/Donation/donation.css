@@ -7,13 +7,13 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     appearance: textfield;
 }
-.overlay {
+.overlay-donation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(123, 164, 242, 0.8) !important;
+    background-color: rgba(123, 165, 242, 0.69) !important;
     z-index: 1040;
 }
 .thank-you-card {

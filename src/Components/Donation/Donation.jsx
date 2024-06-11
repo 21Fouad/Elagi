@@ -34,7 +34,7 @@ export default function Donation() {
   return (
     <>
       {showThankYou && (
-        <div className="overlay">
+        <div className="overlay-donation">
           <div className="thank-you-card position-fixed top-50 start-50 translate-middle">
             <div className="card text-center">
               <div className="card-body">
@@ -49,7 +49,7 @@ export default function Donation() {
           <div className="col-md-5">
             <img src={donationImg} alt="Donation" className={`img-fluid ${i18n.language === 'ar' ? 'rtl-flip-image' : ''}`} />
           </div>
-          <div className="col-md-7">
+          <div className="col-md-7 my-2 my-md-5">
             <form onSubmit={handleDonation} className="p-4 shadow rounded my-5">
               <div className="mb-3 donation-amount">
                 <label htmlFor="donationAmount" className="form-label">{t('donation.donation_amount')}</label>
