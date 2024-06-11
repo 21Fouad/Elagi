@@ -87,7 +87,7 @@ export default function Favourite() {
                 {favorites.map((favorite) => (
                     <div key={favorite.product.id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
                         <div className="card my-card shadow" style={{ maxWidth: '18rem' }}>
-                            <Link to={`/products/${favorite.product.id}`} className="text-decoration-none text-dark">
+                            <Link to={`/medicines/${favorite.product.id}`} className="text-decoration-none text-dark">
                                 <img src={`http://localhost:8000/images/${favorite.product.image_url}`} className="card-img-top" alt={favorite.product.name}/>
                                 <div className="card-body">
                                     <div className='d-flex justify-content-between'>
@@ -114,6 +114,5 @@ export default function Favourite() {
         )}
     </div>
 </>
-
     );
 }
