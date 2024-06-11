@@ -6,11 +6,13 @@ import { useCart } from '../CartContext';
 import { useFavorites } from '../FavoritesContext';
 import { useTranslation } from 'react-i18next'; 
 import './productdetail.css'
+import { Spinner } from 'react-bootstrap';
 
 export default function ProductDetail() {
     const { t, i18n } = useTranslation();
     const { enqueueSnackbar } = useSnackbar();
     const { productId } = useParams();
+    const [isLoading, setIsLoading] = useState(true);
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [errorMessage, setErrorMessage] = useState('');
@@ -27,6 +29,8 @@ export default function ProductDetail() {
             } catch (error) {
                 console.error('Error fetching product details:', error);
                 enqueueSnackbar(t('productDetail.error.fetchProductDetails'), { variant: 'error' });
+            }finally {
+                setIsLoading(false);
             }
         };
         fetchProduct();
@@ -97,8 +101,19 @@ export default function ProductDetail() {
     };
 
 
-    if (!product) {
-        return <div>{t('productDetail.loading')}</div>;
+    // if (!product) {
+    //     return <div>{t('productDetail.loading')}</div>;
+    // }
+
+
+    if (isLoading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: "75vh" }}>
+                <Spinner animation="border text-primary" role="status">
+                    <span className="visually-hidden">{t('loading')}</span>
+                </Spinner>
+            </div>
+        );
     }
 
     return (
