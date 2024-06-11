@@ -36,9 +36,9 @@ export default function Donation() {
       {showThankYou && (
         <div className="overlay-donation">
           <div className="thank-you-card position-fixed top-50 start-50 translate-middle">
-            <div className="card text-center">
+            <div className="card text-center p-3">
               <div className="card-body">
-                <p className="card-text">{t('donation.thank_you')}</p>
+                <p className="card-text fa-1x">{t('donation.thank_you')}</p>
               </div>
             </div>
           </div>
