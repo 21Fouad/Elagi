@@ -87,7 +87,7 @@ export default function Cart() {
         removeFromCart(itemId);
         const updatedCartItems = cartItems.filter(item => item.id !== itemId);
         setCartItems(updatedCartItems);
-        enqueueSnackbar(t('cart.remove_success'), { variant: 'success' });
+        // enqueueSnackbar(t('cart.remove_success'), { variant: 'success' });
     };
 
     const handleClearCart = async () => {
