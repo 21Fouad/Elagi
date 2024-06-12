@@ -125,7 +125,7 @@ export default function Cart() {
                 <div className='text-center mt-5 '>
                     <img src={cartImg} alt={t('cart.empty')} className='cartImg'/>
                     <p className='my-5 ms-5 cartEmptyP'>{t('cart.empty')}</p>
-                    <Link to='/products' className='btn btn-primary ms-5 cartEmptyL'>{t('cart.discover')}</Link>
+                    <Link to='/medicines' className='btn btn-primary ms-5 cartEmptyL'>{t('cart.discover')}</Link>
                 </div>
             ) : (
                 <>
