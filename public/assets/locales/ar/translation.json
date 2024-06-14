@@ -256,10 +256,12 @@
         "quantity": "الكمية",
         "submit_request": "إرسال الطلب",
         "request_submitted": "❤️تم إرسال طلبك بنجاح!",
+        "auth_required": "يجب تسجيل الدخول لطلب دواء نادر",
         "request_failed": "فشل في إرسال الطلب!"
     },
     "form": {
-        "sending": "جاري الإرسال..."
+        "sending": "جاري الإرسال...",
+        "request_failed": "فشل الطلب، يرجى المحاولة مرة أخرى."
     },
     "errors": {
         "fetch_error": "خطأ في جلب البيانات!"

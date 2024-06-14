@@ -257,10 +257,12 @@
         "quantity": "Quantity",
         "submit_request": "Submit Request",
         "request_submitted": "Your request has been submitted successfully!❤️",
+        "auth_required": "You must be logged in to order rare medicine",
         "request_failed": "Failed to submit the request!"
     },
     "form": {
-        "sending": "Sending..."
+        "sending": "Sending...",
+        "request_failed": "Request failed, please try again."
     },
     "errors": {
     "fetch_error": "Error fetching data!"

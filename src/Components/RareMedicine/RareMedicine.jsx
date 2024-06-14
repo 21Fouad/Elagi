@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export default function RareMedicineForm() {
-    const { t ,i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -21,6 +23,12 @@ export default function RareMedicineForm() {
         const fetchUserData = async () => {
             setIsLoading(true);
             const token = localStorage.getItem('userToken');
+            if (!token) {
+                enqueueSnackbar(t('rare_medicine.auth_required'), { variant: 'error' });
+                navigate('/login');
+                setIsLoading(false);
+                return;
+            }
             try {
                 const response = await axios.get('http://localhost:8000/api/user', {
                     headers: { Authorization: `Bearer ${token}` }
@@ -36,7 +44,7 @@ export default function RareMedicineForm() {
         };
 
         fetchUserData();
-    }, [t, enqueueSnackbar]);
+    }, [t, enqueueSnackbar, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -70,7 +78,7 @@ export default function RareMedicineForm() {
     return (
         <>
             {showThankYou && (
-                <div className="overlay">
+                <div className="overlay-donation">
                     <div className="thank-you-card position-fixed top-50 start-50 translate-middle">
                         <div className="card text-center">
                             <div className="card-body">
