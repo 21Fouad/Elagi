@@ -105,7 +105,7 @@ export default function Home() {
                             <div className='ms-2'>
                                 <h4 className='text-white fa-2x offerTitile'>{t('home.offerTitle')}</h4>
                                 <button role='button' className='btn btn-light'>
-                                    <Link to='/products' className='text-black text-decoration-none'>{t('home.buyNow')}</Link>
+                                    <Link to='/medicines' className='text-black text-decoration-none'>{t('home.buyNow')}</Link>
                                 </button>
                             </div>
                             <img src={offerLogo} alt={t('home.offerAlt')} className='img-fluid w-50'/>
