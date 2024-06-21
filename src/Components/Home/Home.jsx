@@ -65,9 +65,9 @@ export default function Home() {
                                     <button type="button" className="btn btn-primary btn-lg d-flex align-items-center">
                                         <div>
                                             <Link to='/features' className='text-decoration-none'>
-                                                <i className="fas fa-file-medical-alt text-white pe-4 fa-2x"></i>
+                                                <i className="fas fa-file-medical-alt text-white pe-4 fa-1x"></i>
                                                 {t('home.discover')}
-                                                <i className="fas fa-chevron-right text-white ps-4 fa-2x"></i>
+                                                <i className="fas fa-chevron-right text-white ps-4 fa-1x"></i>
                                             </Link>
                                         </div>
                                     </button>
