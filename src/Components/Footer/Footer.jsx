@@ -53,11 +53,11 @@ export default function Footer() {
                                     <ul className="list-unstyled">
                                         <li className='d-flex align-items-center'>
                                             <i className="fas fa-phone-alt text-white me-2"></i>
-                                            <p className="mb-0">+20 Xxxxxx</p>
+                                            <p className="mb-0">+20 1027421293 <br /> +20 1013855930</p>
                                         </li>
                                         <li className='d-flex align-items-center'>
                                             <i className="fas fa-envelope text-white me-2"></i>
-                                            <p className="mb-0">email@example.com</p>
+                                            <p className="mb-0">elagi@gmail.com</p>
                                         </li>
                                     </ul>
                                 </div>
