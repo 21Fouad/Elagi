@@ -161,7 +161,10 @@ export default function Home() {
 
             <section>
                 <div className="container my-5">
-                    <h2 className="mb-4 text-center">{t('home.feedbackTitle')}</h2>
+                    <div className='d-flex justify-content-between'>
+                        <h2 className="mb-4 text-center">{t('home.feedbackTitle')}</h2>
+                        <Link to='/feedback' className='text-primary text-decoration-none'>{t('profile.my_feedback')} <i className="fas fa-chevron-right"></i></Link>
+                    </div>
                     <div id="feedbackCarousel" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             {feedbackGroups.map((group, index) => (

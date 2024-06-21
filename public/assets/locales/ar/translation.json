@@ -121,6 +121,14 @@
         "search_placeholder": "ابحث في التصنيفات...",
         "no_categories_found": "لم يتم العثور على تصنيفات لـ {{search}}."
     },
+    "feedback": {
+        "thank_you": "شكرا لملاحظاتك ❤️",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "feedback": "التعليقات",
+        "rating": "التقييم",
+        "submit": "إرسال التعليقات"
+    },
     "products": {
         "header": "الأدوية",
         "search_placeholder": "ابحث عن الأدوية...",
@@ -291,7 +299,7 @@
         "my_account": "حسابي",
         "my_favourite": "المفضلة لدي",
         "my_orders": "طلباتي",
-        "feedback":"أضف تعليقك",
+        "my_feedback":"أضف تعليقك",
         "profile": "الملف الشخصي",
         "full_name": "الاسم الكامل",
         "edit": "تحرير",

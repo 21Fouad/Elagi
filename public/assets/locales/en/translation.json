@@ -288,6 +288,14 @@
         "login_required": "You must be logged in to view this page.",
         "fetch_failed": "Failed to fetch user data."
     },
+    "feedback": {
+        "thank_you": "Thank you for your Feedback ❤️",
+        "name": "Name",
+        "email": "Email",
+        "feedback": "Feedback",
+        "rating": "Rating",
+        "submit": "Submit Feedback"
+    },
     "profile": {
         "my_account": "My Account",
         "my_favourite": "My Favourite",

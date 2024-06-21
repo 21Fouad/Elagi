@@ -64,7 +64,7 @@ export default function CheckOut() {
         <div className="container d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
             {showMessage && (
                 <>
-                    <div className="overlay"></div>
+                    <div className="overlay-donation"></div>
                     <div className="message-card position-fixed top-50 start-50 translate-middle">
                         <div className="card">
                             <div className="card-body">
